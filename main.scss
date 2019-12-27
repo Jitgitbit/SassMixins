@@ -24,14 +24,31 @@ $stripe-properties: to bottom, 15%, blue, white;
 }
 
 //Add your own mixins here
-@mixin backface-visibility($visibility:hidden) {
+@mixin backface-visibility($visibility: hidden) {
   backface-visibility: $visibility;
   -webkit-backface-visibility: $visibility;
   -moz-backface-visibility: $visibility;
   -ms-backface-visibility: $visibility;
   -o-backface-visibility: $visibility;
 }
-
+@mixin transform-style($style){
+   transform-style: $style;
+  -moz-transform-style: $style;
+  -o-transform-style: $style;
+  -ms-transform-style: $style;
+  -webkit-transform-style: $style;
+}
+@mixin transition($time){
+  transition: $time;
+  -webkit-transition: $time;
+  -moz-transition: $time;
+  -o-transition: $time;
+}
+@mixin hover-color($color) {
+   &:hover{
+       color: $color;
+   }
+}
 .notecard {
   width: 300px;
   height: 180px;
@@ -40,7 +57,8 @@ $stripe-properties: to bottom, 15%, blue, white;
   margin: 20px;
   font-family: Roboto, sans-serif;
   box-shadow: 1px 1px 2px 2px rgba(0,0,0,.2);
-  
+  @include transform-style(preserve-3d);
+  @include transition(0.4s);
   &:hover{
   	@include transform (rotatey(-180deg));  
 	}	
@@ -49,7 +67,7 @@ $stripe-properties: to bottom, 15%, blue, white;
     width: 100%;
     height: 100%;
     position: absolute;
-    @include backface-visibility;
+    @include backface-visibility(hidden);
   }
   
   .front {
@@ -61,14 +79,14 @@ $stripe-properties: to bottom, 15%, blue, white;
       text-align: center;
       position: relative;
       top: 40%;
+      @include hover-color(red);
     }    
   }
-  
-  
   .back {
   z-index: 1;
   word-wrap: break-word;
   line-height: 1.6;
+  @include transform(rotatey(-180deg));
     
     .definition {
       @include stripes($stripe-properties...);      
