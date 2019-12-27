@@ -9,7 +9,6 @@ $stripe-properties: to bottom, 15%, blue, white;
     $stripe-background $width-percent
   );
 }
-
 @mixin transform($transformation) {
   transform: $transformation;
   -webkit-transform: $transformation;
@@ -17,12 +16,10 @@ $stripe-properties: to bottom, 15%, blue, white;
   -ms-transform: $transformation;
   -o-transform: $transformation;  
 }
-
 @mixin photo-content($file) {
   content: url(#{$file}.jpg); 
   object-fit: cover;
 }
-
 //Add your own mixins here
 @mixin backface-visibility($visibility: hidden) {
   backface-visibility: $visibility;
@@ -62,18 +59,15 @@ $stripe-properties: to bottom, 15%, blue, white;
   &:hover{
   	@include transform (rotatey(-180deg));  
 	}	
-  
   .front, .back {
     width: 100%;
     height: 100%;
     position: absolute;
     @include backface-visibility(hidden);
   }
-  
   .front {
   z-index: 3;
   font-size: 20px;
-
     .word {
       display: block;
       text-align: center;
@@ -87,7 +81,6 @@ $stripe-properties: to bottom, 15%, blue, white;
   word-wrap: break-word;
   line-height: 1.6;
   @include transform(rotatey(-180deg));
-    
     .definition {
       @include stripes($stripe-properties...);      
       width: 100%;
